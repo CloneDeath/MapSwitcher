@@ -9,7 +9,6 @@ namespace MapSwitcher
 	{
 		public readonly IntPtr PatchMapOffset1;
 		public readonly IntPtr PatchMapOffset2;
-		public readonly IntPtr PatchHeroOffset;
 		public readonly IntPtr HotsPlayers;
 		
 
@@ -18,7 +17,6 @@ namespace MapSwitcher
 		{
 			this.PatchMapOffset1 = new IntPtr(MapOffset1);
 			this.PatchMapOffset2 = new IntPtr(MapOffset2);
-			this.PatchHeroOffset = new IntPtr(HeroOffset);
 			this.HotsPlayers = new IntPtr(PlayerLocation); // array of type HotsPlayer[16]			
 		}
 	}
