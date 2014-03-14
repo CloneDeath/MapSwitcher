@@ -277,10 +277,10 @@ namespace MapSwitcher
 			if (SelectedVersion.Version >= 2) {
 				btnStartGame.Enabled = true;
 				btnLoadMap.Enabled = true;
-				
+
+				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Tutorial02.StormMap");
 				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Practice01.StormMap");
 				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Tutorial01.StormMap");
-				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Tutorial02.StormMap");
 				cbMapSelect.Items.Add("Heroes/BuiltIn/(10)TryMeMode.StormMap");
 			}
 			/* Possibly new maps in the future? */
