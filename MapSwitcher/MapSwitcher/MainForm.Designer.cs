@@ -63,13 +63,13 @@
 			this.cbUnlockTalents = new System.Windows.Forms.CheckBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.btnLoadMap = new System.Windows.Forms.Button();
+			this.btnStartGame = new System.Windows.Forms.Button();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.cbEnemyTeamAI = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.cbAllyTeamAI = new System.Windows.Forms.ComboBox();
-			this.btnStartGame = new System.Windows.Forms.Button();
-			this.btnLoadMap = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -416,6 +416,26 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Game Version";
 			// 
+			// btnLoadMap
+			// 
+			this.btnLoadMap.Location = new System.Drawing.Point(298, 17);
+			this.btnLoadMap.Name = "btnLoadMap";
+			this.btnLoadMap.Size = new System.Drawing.Size(75, 23);
+			this.btnLoadMap.TabIndex = 11;
+			this.btnLoadMap.Text = "LoadMap";
+			this.btnLoadMap.UseVisualStyleBackColor = true;
+			this.btnLoadMap.Click += new System.EventHandler(this.btnLoadMap_Click);
+			// 
+			// btnStartGame
+			// 
+			this.btnStartGame.Location = new System.Drawing.Point(217, 17);
+			this.btnStartGame.Name = "btnStartGame";
+			this.btnStartGame.Size = new System.Drawing.Size(75, 23);
+			this.btnStartGame.TabIndex = 10;
+			this.btnStartGame.Text = "Start Game";
+			this.btnStartGame.UseVisualStyleBackColor = true;
+			this.btnStartGame.Click += new System.EventHandler(this.btnStartGame_Click);
+			// 
 			// groupBox4
 			// 
 			this.groupBox4.Controls.Add(this.cbEnemyTeamAI);
@@ -464,26 +484,6 @@
 			this.cbAllyTeamAI.Name = "cbAllyTeamAI";
 			this.cbAllyTeamAI.Size = new System.Drawing.Size(160, 21);
 			this.cbAllyTeamAI.TabIndex = 0;
-			// 
-			// btnStartGame
-			// 
-			this.btnStartGame.Location = new System.Drawing.Point(217, 19);
-			this.btnStartGame.Name = "btnStartGame";
-			this.btnStartGame.Size = new System.Drawing.Size(75, 23);
-			this.btnStartGame.TabIndex = 10;
-			this.btnStartGame.Text = "Start Game";
-			this.btnStartGame.UseVisualStyleBackColor = true;
-			this.btnStartGame.Click += new System.EventHandler(this.btnStartGame_Click);
-			// 
-			// btnLoadMap
-			// 
-			this.btnLoadMap.Location = new System.Drawing.Point(298, 19);
-			this.btnLoadMap.Name = "btnLoadMap";
-			this.btnLoadMap.Size = new System.Drawing.Size(75, 23);
-			this.btnLoadMap.TabIndex = 11;
-			this.btnLoadMap.Text = "LoadMap";
-			this.btnLoadMap.UseVisualStyleBackColor = true;
-			this.btnLoadMap.Click += new System.EventHandler(this.btnLoadMap_Click);
 			// 
 			// MainForm
 			// 

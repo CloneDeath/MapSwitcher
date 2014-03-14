@@ -64,26 +64,6 @@ namespace MapSwitcher
 					cbVersions.SelectedIndex = num;
 			}
 
-			if (SelectedVersion.Version == 1) {
-				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/PracticeMode01.StormMap");
-				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Tutorial01.StormMap");
-				cbMapSelect.Items.Add("Heroes/BuiltIn/(10)TryMeMode.StormMap");
-			}
-            
-			if (SelectedVersion.Version >= 2) {
-				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Practice01.StormMap");
-				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Tutorial01.StormMap");
-				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Tutorial02.StormMap");
-				cbMapSelect.Items.Add("Heroes/BuiltIn/(10)TryMeMode.StormMap");
-			}
-			/* Possibly new maps in the future? */
-            //cbMapSelect.Items.Add("Heroes/StartingExperience/BAS-SE01.StormMap");
-            //cbMapSelect.Items.Add("Maps/Heroes/(10)CursedHollow.StormMap");
-            //cbMapSelect.Items.Add("Maps/Heroes/(10)BlackhearthsBay.StormMap");
-            //cbMapSelect.Items.Add("Maps/Heroes/(10)DragonShire.StormMap");
-            //cbMapSelect.Items.Add("Maps/Heroes/(10)HauntedMines.StormMap");
-            cbMapSelect.SelectedIndex = 0;
-
             HeroComboBoxes[0] = cbHeroDropdown1;
             HeroComboBoxes[1] = cbHeroDropdown2;
             HeroComboBoxes[2] = cbHeroDropdown3;
@@ -95,17 +75,13 @@ namespace MapSwitcher
             HeroComboBoxes[8] = cbHeroDropdown9;
             HeroComboBoxes[9] = cbHeroDropdown10;
 
-            for (int i = 0; i < 10; ++i)
-            {
-                HeroComboBoxes[i].Items.AddRange(Enum.GetNames(SelectedVersion.HeroIDEnum));
-				HeroComboBoxes[i].SelectedIndex = Heroes[i] - 1;
-            }
-
             cbAllyTeamAI.Items.AddRange(Enum.GetNames(typeof(AIDifficulty)));
 			cbAllyTeamAI.SelectedIndex = (int)AlliedAI;
 
             cbEnemyTeamAI.Items.AddRange(Enum.GetNames(typeof(AIDifficulty)));
             cbEnemyTeamAI.SelectedIndex = (int)EnemyAI;
+
+			cbVersions_SelectedIndexChanged(null, null); //Trigger UI Update
         }
 
         private void btnApply_Click(object sender, EventArgs e)
@@ -265,15 +241,61 @@ namespace MapSwitcher
 
 		private void cbVersions_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			btnStartGame.Enabled = false;
+			btnLoadMap.Enabled = false;
+			btnApply.Enabled = false;
+			cbMapSelect.Enabled = false;
+			btnRandomHeroes.Enabled = false;
+			cbMapSelect.Items.Clear();
+			btnChangeName.Enabled = false;
+			cbAllyTeamAI.Enabled = false;
+			cbEnemyTeamAI.Enabled = false;
+			cbUnlockTalents.Enabled = false;
+			for (int i = 0; i < 10; i++) {
+				HeroComboBoxes[i].Items.Clear();
+				HeroComboBoxes[i].Enabled = false;
+			}
+			if (cbVersions.SelectedIndex == -1) return;
+
+
+			btnRandomHeroes.Enabled = true;
+			btnChangeName.Enabled = true;
+			cbUnlockTalents.Enabled = true;
+			cbAllyTeamAI.Enabled = true;
+			cbEnemyTeamAI.Enabled = true;
+			cbMapSelect.Enabled = true;
 			if (SelectedVersion.Version == 1) {
 				btnStartGame.Enabled = false;
 				btnLoadMap.Enabled = false;
-			}
 
+				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/PracticeMode01.StormMap");
+				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Tutorial01.StormMap");
+				cbMapSelect.Items.Add("Heroes/BuiltIn/(10)TryMeMode.StormMap");
+			}
 			if (SelectedVersion.Version >= 2) {
 				btnStartGame.Enabled = true;
 				btnLoadMap.Enabled = true;
+				
+				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Practice01.StormMap");
+				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Tutorial01.StormMap");
+				cbMapSelect.Items.Add("Heroes/BuiltIn/StartingExperience/Tutorial02.StormMap");
+				cbMapSelect.Items.Add("Heroes/BuiltIn/(10)TryMeMode.StormMap");
 			}
+			/* Possibly new maps in the future? */
+			//cbMapSelect.Items.Add("Heroes/StartingExperience/BAS-SE01.StormMap");
+			//cbMapSelect.Items.Add("Maps/Heroes/(10)CursedHollow.StormMap");
+			//cbMapSelect.Items.Add("Maps/Heroes/(10)BlackhearthsBay.StormMap");
+			//cbMapSelect.Items.Add("Maps/Heroes/(10)DragonShire.StormMap");
+			//cbMapSelect.Items.Add("Maps/Heroes/(10)HauntedMines.StormMap");
+			cbMapSelect.SelectedIndex = 0;
+
+			for (int i = 0; i < 10; ++i) {
+				HeroComboBoxes[i].Enabled = true;
+				HeroComboBoxes[i].Items.AddRange(Enum.GetNames(SelectedVersion.HeroIDEnum));
+				HeroComboBoxes[i].SelectedIndex = Heroes[i] - 1;
+			}
+
+			btnApply.Enabled = true;
 		}
 
 		private void btnStartGame_Click(object sender, EventArgs e)
