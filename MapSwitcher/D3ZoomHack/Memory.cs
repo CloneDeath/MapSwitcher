@@ -4,39 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using MapSwitcher.D3ZoomHack;
 
 namespace D3ZoomHack
 {
-    [Flags]
-    public enum AllocationType : int
-    {
-        Commit = 0x1000,
-        Reserve = 0x2000,
-        Decommit = 0x4000,
-        Release = 0x8000,
-        Reset = 0x80000,
-        Physical = 0x400000,
-        TopDown = 0x100000,
-        WriteWatch = 0x200000,
-        LargePages = 0x20000000
-    }
-
-    [Flags]
-    public enum MemoryProtection : int
-    {
-        Execute = 0x10,
-        ExecuteRead = 0x20,
-        ExecuteReadWrite = 0x40,
-        ExecuteWriteCopy = 0x80,
-        NoAccess = 0x01,
-        ReadOnly = 0x02,
-        ReadWrite = 0x04,
-        WriteCopy = 0x08,
-        GuardModifierflag = 0x100,
-        NoCacheModifierflag = 0x200,
-        WriteCombineModifierflag = 0x400
-    }
-
     class Memory
     {
         [DllImport("kernel32.dll", SetLastError = true)]
@@ -74,8 +45,9 @@ namespace D3ZoomHack
         {
             processes = _processes;
 
-            foreach (var p in processes)
-                p.EnableRaisingEvents = true;
+			foreach (Process p in processes) {
+				p.EnableRaisingEvents = true;
+			}
         }
 
         public static void SelectProcess(int index)
