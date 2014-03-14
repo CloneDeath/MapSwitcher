@@ -171,7 +171,7 @@
 			this.cbVersions.Location = new System.Drawing.Point(62, 19);
 			this.cbVersions.Name = "cbVersions";
 			this.cbVersions.Size = new System.Drawing.Size(146, 21);
-			this.cbVersions.TabIndex = 9;
+			this.cbVersions.TabIndex = 1;
 			this.cbVersions.SelectedIndexChanged += new System.EventHandler(this.cbVersions_SelectedIndexChanged);
 			// 
 			// groupBox1

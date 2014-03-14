@@ -56,15 +56,7 @@ namespace MapSwitcher
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-			for (int i = 0; i < Offsets.Count; i++){
-				int num = cbVersions.Items.Add(Offsets[i].Build);
-
-				/* Try to guess which version this is for */
-				if (File.Exists(string.Format("Versions\\Base{0}\\Play.exe", Offsets[i].Build)))
-					cbVersions.SelectedIndex = num;
-			}
-
-            HeroComboBoxes[0] = cbHeroDropdown1;
+			HeroComboBoxes[0] = cbHeroDropdown1;
             HeroComboBoxes[1] = cbHeroDropdown2;
             HeroComboBoxes[2] = cbHeroDropdown3;
             HeroComboBoxes[3] = cbHeroDropdown4;
@@ -81,6 +73,14 @@ namespace MapSwitcher
             cbEnemyTeamAI.Items.AddRange(Enum.GetNames(typeof(AIDifficulty)));
             cbEnemyTeamAI.SelectedIndex = (int)EnemyAI;
 
+			for (int i = 0; i < Offsets.Count; i++) {
+				int num = cbVersions.Items.Add(Offsets[i].Build);
+
+				/* Try to guess which version this is for */
+				if (File.Exists(string.Format("Versions\\Base{0}\\Play.exe", Offsets[i].Build)))
+					cbVersions.SelectedIndex = num;
+			}
+			
 			cbVersions_SelectedIndexChanged(null, null); //Trigger UI Update
         }
 
@@ -251,6 +251,7 @@ namespace MapSwitcher
 			cbAllyTeamAI.Enabled = false;
 			cbEnemyTeamAI.Enabled = false;
 			cbUnlockTalents.Enabled = false;
+			tbName.Enabled = false;
 			for (int i = 0; i < 10; i++) {
 				HeroComboBoxes[i].Items.Clear();
 				HeroComboBoxes[i].Enabled = false;
@@ -263,6 +264,7 @@ namespace MapSwitcher
 			cbUnlockTalents.Enabled = true;
 			cbAllyTeamAI.Enabled = true;
 			cbEnemyTeamAI.Enabled = true;
+			tbName.Enabled = true;
 			cbMapSelect.Enabled = true;
 			if (SelectedVersion.Version == 1) {
 				btnStartGame.Enabled = false;
