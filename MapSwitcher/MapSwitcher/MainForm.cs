@@ -24,6 +24,7 @@ namespace MapSwitcher
             new HotsOffsets_V1(29049,	0x0140C680, 0x0140C687, 0x02E02E94, 0x04462B50,		0x0301D71C, 0x02314FE6),
             new HotsOffsets_V1(29108,	0x0140DF60, 0x0140DF67, 0x02E04E94, 0x04464B50,		0x0301F71C, 0x02316FE6),
 			new HotsOffsets_V2(29360,							0x0302417B, 0x0446FFB0,		0x032802FD, 0x0232221B,		3720),
+			new HotsOffsets_V2(29406,							0x0302417B, 0x0446FFB0,		0x032802FD, 0x0232221B,		3720), // Data Update, Executables the same as 29360
         };
 
 		private AIDifficulty AlliedAI = AIDifficulty.HeroAIElite;
